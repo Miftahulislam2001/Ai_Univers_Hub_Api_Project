@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News-find_Api Practice project</title>
     <link rel="stylesheet" href="style/bootstrap.css">
+    <script src="https://kit.fontawesome.com/d421e26e73.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <!-- HEADER SECTION -->
 <header class="container my-3">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar rounded" style="background-color: rgba(0, 0, 0, 0.2);">
         <div class="container-fluid">
           <a class="navbar-brand fw-bold">AI Universe <span class="text-danger">HUB</span></a>
           <form class="d-flex">
@@ -26,10 +27,106 @@
 </header>
 
 <!-- MAIN SECTION -->
-<main></main>
+<main class="container">
+    <div id="card-container" class="row row-cols-1 row-cols-md-3">
+        <div class="col">
+            <div class="card h-100 p-3">
+                <img src="https://hawar.no/wp-content/uploads/2023/04/chatgpt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Features</h5>
+                        <div>
+                            <ol>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                            </ol>  
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4>Name</h4>
+                             <div class = "d-flex  justify-content-center align-items-center gap-2">
+                             <i class="fa-solid fa-calendar-days"></i>
+                             <p class="p-0 m-0">data.published_in</p>
+                             </div>
+                         </div>
+                         <div>
+                         <button onclick = "showModal('${data.id}')" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right fs-3 text-danger"></i></button>
+                         </div>  
+                    </div>
+                </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 p-3">
+                <img src="https://hawar.no/wp-content/uploads/2023/04/chatgpt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Features</h5>
+                        <div>
+                            <ol>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                            </ol>  
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4>Name</h4>
+                             <div class = "d-flex  justify-content-center align-items-center gap-2">
+                             <i class="fa-solid fa-calendar-days"></i>
+                             <p>data.published_in</p>
+                             </div>
+                         </div>
+                         <div>
+                         <button onclick = "showModal('${data.id}')" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right fs-3 text-danger"></i></button>
+                         </div>  
+                    </div>
+                </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 p-3">
+                <img src="https://hawar.no/wp-content/uploads/2023/04/chatgpt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Features</h5>
+                        <div>
+                            <ol>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                                <li>link 1</li>
+                            </ol>  
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4>Name</h4>
+                             <div class = "d-flex  justify-content-center align-items-center gap-2">
+                             <i class="fa-solid fa-calendar-days"></i>
+                             <p>data.published_in</p>
+                             </div>
+                         </div>
+                         <div>
+                         <button onclick = "showModal('${data.id}')" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right fs-3 text-danger"></i></button>
+                         </div>  
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="text-center my-4">
+        <button class="text-center btn btn-danger fw-bold shadow">Show More</button>
+    </div>
+</main>
 
 <!-- FOOTER SECTION -->
-<footer></footer>
+
+    <footer class="container text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Copyright: Miftahul Islam Sohan
+        </div>
+        <!-- Copyright -->
+      </footer>
+
 
 <!-- script File -->
 <script src="js/bootstrap.js"></script>
