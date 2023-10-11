@@ -1,18 +1,35 @@
 // LoadData Function
-const LoadData = () =>{
+let cardCount = 6;
+const LoadData = () => {
     const URL = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(URL)
-    .then(res => res.json())
-    .then(data => {
-        
-        displayData(data.data.tools)
-    })
+        .then(res => res.json())
+        .then(data => {
+            let toolsData = data.data.tools;
+            let tools = toolsData.slice(0, cardCount)
+            displayData(tools)
+
+            // Show More Card
+            const seeMoreBtn = document.getElementById('see-more');
+            if (tools.length === 6) {
+                seeMoreBtn.classList.add('d-block');
+                seeMoreBtn.classList.remove('d-none');
+            }
+            // Show More Card
+            seeMoreBtn.onclick = () => {
+                cardCount = toolsData.length;
+                LoadData()
+                seeMoreBtn.classList.add('d-none');
+                seeMoreBtn.classList.remove('d-block');
+            }
+        })
 };
 
-const displayData = (data) =>{
+const displayData = (data) => {
     const cardContainer = document.getElementById('card-container');
+    cardContainer.innerHTML = '';
     data.forEach(elements => {
-        const {image, name, description, published_in, features} = elements;
+        const { image, name, description, published_in, features } = elements;
         console.log(elements);
         const div = document.createElement('div')
         div.innerHTML = `
@@ -47,5 +64,6 @@ const displayData = (data) =>{
         cardContainer.appendChild(div);
     });
 };
+
 
 LoadData();
