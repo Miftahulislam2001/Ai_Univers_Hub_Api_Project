@@ -9,9 +9,6 @@ function accuracyTagAdder(score) {
   accuracyContainer.innerHTML = `<p class=" bg-danger p-2" id="accuracy">${score}</p>`;
 }
 
-
-
-
 /* ------------------------------ Load Card Data ------------------------------ */
 let cardCount = 6;
 const LoadData = () => {
@@ -23,14 +20,24 @@ const LoadData = () => {
             let toolsData = data.data.tools;
             let tools = toolsData.slice(0, cardCount)
             displayData(tools)
+            /* ------------------------------ Sort By Date ------------------------------ */
+            const sortByDate = () =>{
+                tools.sort(function(a, b){
+                    return new Date(a.published_in) - new Date(b.published_in);
+                })
+            };
+            const sortBtn = document.getElementById('sort-btn');
+            sortBtn.addEventListener('click', ()=>{
+                sortByDate();
+                displayData(tools)
+            })
 
-            // Show More Card
+            /* ------------------------------ Show More Card ------------------------------ */
             const seeMoreBtn = document.getElementById('see-more');
             if (tools.length === 6) {
                 seeMoreBtn.classList.add('d-block');
                 seeMoreBtn.classList.remove('d-none');
             }
-            // Show More Card
             seeMoreBtn.onclick = () => {
                 cardCount = toolsData.length;
                 LoadData()
@@ -135,13 +142,6 @@ const displayModal = (singleData) =>{
    
 
 };
-
-
-
-
-
-
-
 
 
 LoadData();
