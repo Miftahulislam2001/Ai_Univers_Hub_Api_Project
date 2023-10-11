@@ -1,6 +1,19 @@
-// LoadData Function
-let cardCount = 6;
+/* ------------------------------- Accuracy ------------------------------ */
+const accuracyContainer = document.getElementById("accuracy-container")
+function accuracyTagRemover() {
+  document.getElementById("accuracy").remove();
+  return "";
+};
+
+function accuracyTagAdder(score) {
+  accuracyContainer.innerHTML = `<p class=" bg-danger p-2" id="accuracy">${score}</p>`;
+}
+
+
+
+
 /* ------------------------------ Load Card Data ------------------------------ */
+let cardCount = 6;
 const LoadData = () => {
     spinner(true)
     const URL = `https://openapi.programming-hero.com/api/ai/tools`;
@@ -90,7 +103,6 @@ const showModal = (id) =>{
 
 /* ------------------------------- Display Modal ------------------------------ */
 const displayModal = (singleData) =>{
-    console.log(singleData);
     const {image_link, input_output_examples, description, pricing, features} = singleData;
     
     document.getElementById('modal-images').src = `${image_link[0]}`
@@ -101,6 +113,7 @@ const displayModal = (singleData) =>{
     document.getElementById('basic').innerText = `${pricing ? pricing[0].price : 'Free of Cost'}`
     document.getElementById('month-pro').innerText = `${pricing ? pricing[1].price : 'Free of Pro'}`
     document.getElementById('contact-us').innerText = `${pricing ? pricing[2].price : 'Free of Enterprise'}`
+    `${singleData.accuracy.score ? accuracyTagAdder(singleData.accuracy.score * 100 + '% accuracy') : accuracyTagRemover()}`;
 
     document.getElementById('li-1').innerText = `${features[1].feature_name}`
     document.getElementById('li-2').innerText = `${features[2].feature_name}`
