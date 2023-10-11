@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<!-- HEADER SECTION -->
+<!-- ------------------------------- Header Section ------------------------------- -->
 <header class="container my-3">
     <nav class="navbar rounded" style="background-color: rgba(0, 0, 0, 0.2);">
         <div class="container-fluid">
@@ -21,12 +21,14 @@
       </nav>
 
       <h2 class="text-center my-3 ">Ai Universe <span class="text-danger">Hub</span></h2>
+
+      <!-- --------------------------- Sort By Date Button ------------------------>
       <div class="text-center">
         <button class="text-center btn btn-danger fw-bold shadow">Sort by Date</button>
       </div>
 </header>
 
-<!-- MAIN SECTION -->
+
 <main class="container">
 
     <!-- ------------------------------- Card Container ------------------------------>
@@ -48,26 +50,86 @@
         </div>
     </section>
 </main>
+
+<!-------------------------------------- Modal Section------------------------------------>
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered p-4 ">
+      <div class="modal-content">
+          <div class="">
+              <button type="button" class="btn-close float-end text-danger" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+          </div>
+          <div class="d-flex flex-column flex-lg-row justify-content-around overflow-hidden gap-3 m-3">
+              <div class="card p-2 border border-1 border-danger" style="width:100%; height:80%;">
+                  <div class="card-body">
+                      <h5 id="modal-left-dec" class="card-text">
+                     
+                      </h5>
+                      <div class="d-flex justify-content-between flex-column flex-lg-row my-3 text-center ">
+                          <div id="basic" class="box w-75 bg-light shadow-sm border border-1">$10/month
+                              Basic</div>
+                          <div id="month-pro" class="box w-75 bg-light shadow-sm border border-1">$50/month
+                              Pro</div>
+                          <div id="contact-us" class="box w-75 bg-light shadow-sm border border-1">Contact
+                              us
+                              Enterprise</div>
+                      </div>
+
+                      <div class="d-flex justify-content-between flex-column flex-lg-row my-3">
+                          <div>
+                              <h4>Features</h4>
+                              <ul>
+                                  <li id="li-1">Customizable responses</li>
+                                  <li id="li-2">Multilingual support</li>
+                                  <li id="li-3">Seamless integration</li>
+                              </ul>
+                          </div>
+                          <div>
+                              <h4>Integrations</h4>
+                              <ul id="Integrations">
+                                 
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="card text-center p-2" style="width:100%; height:100%">
+                  <div class="accuracy-div position-absolute rounded-1" id="accuracy-container">
+                      <p class="accuracy rounded" id="accuracy"></p>
+                  </div>
+                  <img id="modal-images" src="" class="card-img-top" alt="..." />
+                  <div class="card-body">
+                      <h5 id="modal-title" class="card-text">
+                          
+                      </h5>
+                      <p id="modal-para">
+                          
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 </main>
 
-<!-- FOOTER SECTION -->
 
+<!-- ------------------------------- Footer Section ------------------------------- -->
     <footer class="container text-center text-lg-start">
-        <!-- Copyright -->
         <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2023 Copyright: Miftahul Islam Sohan
         </div>
-        <!-- Copyright -->
       </footer>
 
 
-<!-- script File -->
+<!-- ------------------------------- Script File ------------------------------- -->
 <script src="js/bootstrap.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
 
-<!-- All data: https://openapi.programming-hero.com/api/ai/tools
+<!-- 
 
 Single data details: https://openapi.programming-hero.com/api/ai/tool/${id}
 

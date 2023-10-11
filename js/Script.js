@@ -1,5 +1,6 @@
 // LoadData Function
 let cardCount = 6;
+/* ------------------------------ Load Card Data ------------------------------ */
 const LoadData = () => {
     spinner(true)
     const URL = `https://openapi.programming-hero.com/api/ai/tools`;
@@ -26,12 +27,12 @@ const LoadData = () => {
         })
 };
 
+/* ------------------------------- Display Card ------------------------------ */
 const displayData = (data) => {
     const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
     data.forEach(elements => {
-        const { image, name, description, published_in, features } = elements;
-        console.log(elements);
+        const { image, name, description, published_in, features, id } = elements;
         const div = document.createElement('div')
         div.innerHTML = `
         <div class="col">
@@ -56,7 +57,7 @@ const displayData = (data) => {
                          </div>
                      </div>
                      <div>
-                     <button onclick = "" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right fs-3 text-danger"></i></button>
+                     <button onclick = "showModal('${id}')" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fa-solid fa-arrow-right fs-3 text-danger"></i></button>
                      </div>  
                 </div>
             </div>
@@ -74,6 +75,52 @@ const spinner = (isLoading) => {
     } else {
       document.getElementById("spinner-section").classList.add("d-none");
     }
+};
+
+/* ------------------------------- Show Modal ------------------------------ */
+const showModal = (id) =>{
+    const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    fetch(URL)
+    .then(res => res.json())
+    .then(data => {
+
+        displayModal(data.data)
+    })
+};
+
+/* ------------------------------- Display Modal ------------------------------ */
+const displayModal = (singleData) =>{
+    console.log(singleData);
+    const {image_link, input_output_examples, description, pricing, features} = singleData;
+    
+    document.getElementById('modal-images').src = `${image_link[0]}`
+    document.getElementById('modal-title').innerText = `${input_output_examples ? input_output_examples[0].input : 'Can You Give any Example ?'}`
+    document.getElementById('modal-para').innerText = `${input_output_examples ? input_output_examples[0].output : 'No ! No Yet. Talk a Break'}`
+    
+    document.getElementById('modal-left-dec').innerText = `${description ? description : 'NO Description'}`
+    document.getElementById('basic').innerText = `${pricing ? pricing[0].price : 'Free of Cost'}`
+    document.getElementById('month-pro').innerText = `${pricing ? pricing[1].price : 'Free of Pro'}`
+    document.getElementById('contact-us').innerText = `${pricing ? pricing[2].price : 'Free of Enterprise'}`
+
+    document.getElementById('li-1').innerText = `${features[1].feature_name}`
+    document.getElementById('li-2').innerText = `${features[2].feature_name}`
+    document.getElementById('li-3').innerText = `${features[3].feature_name}`
+
+    /* ------------------------------- Integration ------------------------------ */
+    const integrations = document.getElementById("Integrations");
+    integrations.innerHTML = "";
+    const integrationsList = singleData.integrations ? integrationsAdder(singleData.integrations) : integrationsAdder("");
+    function integrationsAdder(integrationsLists) {
+      try {
+        integrationsLists.forEach(integration => {
+          integrations.innerHTML += `<li class="py-1">${integration}</li>`
+        })
+      } catch (err) {
+        integrations.innerText = "No data found";
+      }
+    }
+   
+
 };
 
 
