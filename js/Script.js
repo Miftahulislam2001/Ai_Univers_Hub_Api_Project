@@ -1,6 +1,7 @@
 // LoadData Function
 let cardCount = 6;
 const LoadData = () => {
+    spinner(true)
     const URL = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(URL)
         .then(res => res.json())
@@ -63,7 +64,24 @@ const displayData = (data) => {
         `;
         cardContainer.appendChild(div);
     });
+    spinner(false)
 };
+
+/* ------------------------------- Spinner Add ------------------------------ */
+const spinner = (isLoading) => {
+    if (isLoading) {
+      document.getElementById("spinner-section").classList.remove("d-none");
+    } else {
+      document.getElementById("spinner-section").classList.add("d-none");
+    }
+};
+
+
+
+
+
+
+
 
 
 LoadData();
